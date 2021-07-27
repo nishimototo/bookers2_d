@@ -7,16 +7,16 @@
           <% if chat.user == current_user %>
             <tbody>
               <tr>
-                <td style="text-align: left;">
-                  <%= chat.message %>
+                <td>
+                  <p style="text-align: left;"><%= chat.message %></p>
                 </td>
               </tr>
             </tbody>
           <% else %>
             <tbody>
               <tr>
-                <td style="text-align: right;">
-                  <%= chat.message %>
+                <td>
+                  <p style="text-align: right;"><%= chat.message %></p>
                 </td>
               </tr>
             </tbody>
