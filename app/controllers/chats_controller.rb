@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
-    user_room = UserRoom.where(user_id: @user.id, room_id: rooms)
+    user_room = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
     if user_room.nil?
       @room = Room.new
@@ -16,4 +16,14 @@ class ChatsController < ApplicationController
     @chat = Chat.new(room_id: @room.id)
     @chats = @room.chats
   end
+
+  def create
+    @chat = current_user.chats.new(chat_params)
+    @chat.save
+  end
+
+  private
+    def chat_params
+      params.require(:chat).permit(:message, :room_id)
+    end
 end
