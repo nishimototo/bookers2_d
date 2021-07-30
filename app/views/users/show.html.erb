@@ -32,32 +32,15 @@
           <% end %>
         </tbody>
       </table>
-      <h3>7日間分の投稿数</h3>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>6日前</th>
-            <th>5日前</th>
-            <th>4日前</th>
-            <th>3日前</th>
-            <th>2日前</th>
-            <th>1日前</th>
-            <th>今日</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= @books.created_6days_ago.count %></td>
-            <td><%= @books.created_5days_ago.count %></td>
-            <td><%= @books.created_4days_ago.count %></td>
-            <td><%= @books.created_3days_ago.count %></td>
-            <td><%= @books.created_2days_ago.count %></td>
-            <td><%= @yesterday_book.count %></td>
-            <td><%= @today_book.count %></td>
-          </tr>
-        </tbody>
-      </table>
-      <%= line_chart @books.group_by_day(:created_at).count %>
+      <%= form_with url: user_search_path(@user), method: :get do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit "検索", class:"btn btn-primary btn-sm" %>
+      <% end %>
+      <div id="search_result">
+        <% if @search_book.present? %>
+          <%= render "users/search", search_book: @search_book %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
