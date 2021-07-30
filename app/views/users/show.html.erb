@@ -57,6 +57,7 @@
           </tr>
         </tbody>
       </table>
+      <%= line_chart @books.group_by_day(:created_at).count %>
     </div>
   </div>
 </div>

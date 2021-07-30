@@ -74,3 +74,6 @@ gem 'devise'
 gem 'impressionist', '~>1.6.1'
 
 gem 'dotenv-rails'
+
+gem "chartkick"
+gem 'groupdate'
