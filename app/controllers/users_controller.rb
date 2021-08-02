@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @last_week_book = @books.created_last_week
     @the_day_before = @today_book.count / @yesterday_book.count.to_f
     @the_week_before = @this_week_book.count / @last_week_book.count.to_f
-
   end
 
   def edit
